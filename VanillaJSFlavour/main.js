@@ -1,5 +1,9 @@
+let button = document.querySelector("button");
+button.innerHTML = "Toggle Horizontal";
+let horizontal = false;
+
 //Chart Options
-const options = {
+let options = {
     chart: {
         height: 450,
         width: "100%",
@@ -43,3 +47,31 @@ const chart = new ApexCharts(document.querySelector("#chart"), options);
 
 //Render Chart
 chart.render();
+
+//Toggle Button Event to change the orientation of Graph
+button.addEventListener("click", () => {
+    horizontal = !horizontal;
+    if(horizontal)
+    {
+        chart.updateOptions({
+            plotOptions: {
+                bar: {
+                    horizontal: true
+                }
+            },
+        });
+        button.innerHTML = "Toggle Vertical";
+    }
+    else
+    {
+        chart.updateOptions({
+            plotOptions: {
+                bar: {
+                    horizontal: false
+                }
+            },
+        });
+        button.innerHTML = "Toggle Horizontal";
+    }
+    
+});
