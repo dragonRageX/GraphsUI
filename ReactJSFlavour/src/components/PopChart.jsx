@@ -39,13 +39,35 @@ export default function PopChart()
         }]
     });
 
+    function toggle()
+    {
+        setGraph((prevGraph) => {
+            return {
+                ...prevGraph,
+                options: {
+                    ...prevGraph.options,
+                    plotOptions: {
+                        ...prevGraph.options.plotOptions,
+                        bar: {
+                            ...prevGraph.options.plotOptions.bar,
+                            horizontal: !(prevGraph.options.plotOptions.bar.horizontal)
+                        }
+                    }
+                }
+            }
+        });
+    }
+
     return (
-        <Chart 
-            options={graph.options}
-            series={graph.series}
-            type="bar"
-            width="100%"
-            height="450"
-        />
+        <>
+            <Chart 
+                options={graph.options}
+                series={graph.series}
+                type="bar"
+                width="100%"
+                height="450"
+                />
+            <button onClick={toggle}>Toggle {graph.options.plotOptions.bar.horizontal ? "Vertical" : "Horizontal"}</button>
+        </>
     )
 }
