@@ -1,8 +1,11 @@
 import React from "react"
+import PopChart from "./components/PopChart"
 
 export default function App()
 {
   return (
-    <h1>Hello</h1>
+    <div className="container">
+      <PopChart />
+    </div>
   );
 }
